@@ -11,13 +11,13 @@
 - **Production**
   - Run `npm run build` and `npm start`
 
-## How to reset database
+### How to reset database
 
 - `cd insecure-app`
 - Delete `prisma/deb.db`
 - Run `npm run initdb`
 
-## Default users (username:password)
+### Default users (username:password)
 
 - akiha:vermillion
 - arcueid:redblood
