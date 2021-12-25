@@ -37,19 +37,28 @@ async function notesRoute(req: NextApiRequest, res: NextApiResponse) {
         return
       }
 
-      // Fix FLAW4 by uncommenting the following lines.
+      // Fix FLAW4 validation issue by uncommenting the following lines.
       // if (!title || !content || title.length === 0 || content.length === 0) {
       //   res.status(400).json({ message: 'Malformed request' })
       //   return
       // }
 
-      const note = await prisma.note.create({
-        data: {
-          title,
-          content,
-          authorId: user.id,
-        },
-      })
+      // FIX FLAW4 security issue commenting out next 3 lines and uncomment´
+      const note = await prisma.$queryRawUnsafe(
+        `INSERT INTO note (title, content, authorId) VALUES ('${title}', '${content}', ${user.id});`
+      )
+
+      // and by uncommenting the following line´
+      // const note = await prisma.$queryRaw`INSERT INTO note (title, content, authorId) VALUES (${title}, ${content}, ${user.id})`
+      // OR these lines:
+      // const note = await prisma.note.create({
+      //   data: {
+      //     title,
+      //     content,
+      //     authorId: user.id,
+      //   },
+      // })
+
       res.status(201).json(note)
       return
     }
