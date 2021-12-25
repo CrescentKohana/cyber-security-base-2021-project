@@ -43,12 +43,12 @@ async function notesRoute(req: NextApiRequest, res: NextApiResponse) {
       //   return
       // }
 
-      // FIX FLAW4 security issue commenting out next 3 lines and uncomment´
+      // FIX FLAW4 security issue commenting out next 3 lines
       const note = await prisma.$queryRawUnsafe(
         `INSERT INTO note (title, content, authorId) VALUES ('${title}', '${content}', ${user.id});`
       )
 
-      // and by uncommenting the following line´
+      // and by uncommenting the following line
       // const note = await prisma.$queryRaw`INSERT INTO note (title, content, authorId) VALUES (${title}, ${content}, ${user.id})`
       // OR these lines:
       // const note = await prisma.note.create({
