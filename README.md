@@ -31,7 +31,7 @@ Based on [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
   - **Fix** in [insecure-app/pages/api/note.ts](insecure-app/pages/api/note.ts) by uncommenting marked lines (11 and downwards)
 - [FLAW2] [A02:2021 – Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/) and [A07:2021 – Identification and Authentication Failures](https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/)
   - Passwords are stored in plain text.
-  - **Fix** by encrypting and salting passwords.
+  - **Fix** by uncommenting and commenting marked lines in [insecure-app/pages/api/register.ts](insecure-app/pages/api/register.ts) and [insecure-app/pages/api/login.ts](insecure-app/pages/api/login.ts)
 - [FLAW3] [A06:2021 – Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/)
   - An outdated dependency: iron-session. Latest version at the time of writing is 6.0.4 but the app uses 6.0.1.
   - **Fix** in package.json:
@@ -40,7 +40,7 @@ Based on [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
     - Manual update `"iron-session": "6.0.1",` -> `"iron-session": "6.0.4",`
 - [FLAW4] [A03:2021 – Injection](https://owasp.org/Top10/A03_2021-Injection/)
   - Note data is not validated or sanitized by the application.
-  - **Fix** in [insecure-app/pages/api/note.ts](insecure-app/pages/api/note.ts) by uncommenting marked lines (40 and downwards)
+  - **Fix** in [insecure-app/pages/api/note.ts](insecure-app/pages/api/note.ts) by uncommenting and commenting marked lines
 - [FLAW5] [A05:2021 – Security Misconfiguration](https://owasp.org/Top10/A05_2021-Security_Misconfiguration/)
   - The security settings in the iron-session are not set to secure values.
   - **Fix** in [insecure-app/lib/session.ts](insecure-app/lib/session.ts) by setting the secure prop in cookieOptions to `process.env.NODE_ENV === 'production'`.
