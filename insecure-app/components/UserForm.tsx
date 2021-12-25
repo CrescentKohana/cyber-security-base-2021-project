@@ -1,11 +1,13 @@
 import { FormEvent } from 'react'
 
-export default function LoginForm({
+export default function UserForm({
   errorMessage,
   onSubmit,
+  register,
 }: {
   errorMessage: string
   onSubmit: (e: FormEvent<HTMLFormElement>) => void
+  register?: boolean
 }) {
   return (
     <form onSubmit={onSubmit}>
@@ -15,7 +17,7 @@ export default function LoginForm({
         <b>Password</b>
         <input type="password" name="password" required />
       </label>
-      <button type="submit">Login</button>
+      <button type="submit">{register ? 'Register' : 'Login'}</button>
       {errorMessage && <p className="error">{errorMessage}</p>}
 
       <style jsx>{`

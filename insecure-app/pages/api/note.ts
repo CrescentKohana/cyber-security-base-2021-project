@@ -9,7 +9,7 @@ async function notesRoute(req: NextApiRequest, res: NextApiResponse) {
   const user = req.session.user
 
   // Fix FLAW1 by uncommenting the following lines.
-  // if (!user?.id || user.isLoggedIn === false) {
+  // if (!user?.id || !user.isLoggedIn) {
   //   res.status(401).end()
   //   return
   // }

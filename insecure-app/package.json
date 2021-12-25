@@ -7,7 +7,8 @@
     "initdb": "prisma generate && prisma db push && node populate.mjs"
   },
   "dependencies": {
-    "@prisma/client": "^3.6.0",
+    "@prisma/client": "^3.7.0",
+    "bcrypt": "^5.0.1",
     "iron-session": "6.0.1",
     "next": "^12.0.7",
     "react": "^17.0.2",
@@ -15,8 +16,9 @@
     "swr": "^1.1.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/react": "^17.0.37",
-    "prisma": "^3.6.0",
+    "prisma": "^3.7.0",
     "typescript": "^4.5.4"
   }
 }

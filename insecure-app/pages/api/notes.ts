@@ -8,7 +8,7 @@ export default withIronSessionApiRoute(notesRoute, sessionOptions)
 async function notesRoute(req: NextApiRequest, res: NextApiResponse<Note[]>) {
   const user = req.session.user
 
-  if (!user?.id || user.isLoggedIn === false) {
+  if (!user?.id || !user.isLoggedIn) {
     res.status(401).end()
     return
   }

@@ -8,6 +8,7 @@ export default function Login() {
   const { mutateUser } = useUser({
     redirectTo: '/',
     redirectIfFound: true,
+    register: true,
   })
 
   const [errorMsg, setErrorMsg] = useState('')
@@ -16,6 +17,7 @@ export default function Login() {
     <Layout>
       <div className="login">
         <UserForm
+          register
           errorMessage={errorMsg}
           onSubmit={async function handleSubmit(event) {
             event.preventDefault()
@@ -27,7 +29,7 @@ export default function Login() {
 
             try {
               mutateUser(
-                await fetchJson('/api/login', {
+                await fetchJson('/api/register', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify(body),
